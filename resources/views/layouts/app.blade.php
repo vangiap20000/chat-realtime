@@ -16,6 +16,11 @@
 
         <!-- Styles -->
         @livewireStyles
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <x-banner />

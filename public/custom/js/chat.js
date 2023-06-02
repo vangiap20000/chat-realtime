@@ -58,11 +58,13 @@ $(document).ready(function() {
 
     socket.on('message', (message) => {
         listMessage(message);
+        scrollMessages();
     });
 
     function sendMessageToServer(message) {
         socket.emit("chat", message);
         sendMessage(message);
+        scrollMessages();
     }
     
     function listMessage(message) {
@@ -157,5 +159,13 @@ $(document).ready(function() {
 
         sendMessageToServer(message);
         $(".close-modal").trigger("click");
+    }
+
+    scrollMessages();
+    function scrollMessages() {
+        setTimeout(() => {
+            let element = document.getElementById('messages');
+            element.scrollTo(0, element.scrollHeight);
+        }, 500)
     }
 });
