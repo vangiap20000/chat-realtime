@@ -19,7 +19,7 @@ class Message extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'room_id', 'from', 'to', 'content', 'file', 'created_at', 'updated_at'
+        'room_id', 'from', 'content', 'file', 'created_at', 'updated_at'
     ];
 
     /**
@@ -28,14 +28,6 @@ class Message extends Model
     public function room(): HasOne
     {
         return $this->hasOne(Room::class);
-    }
-
-    /**
-     * Get the userTo that owns the messages.
-     */
-    public function userTo(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'to', 'id');
     }
 
     /**
