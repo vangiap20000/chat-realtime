@@ -12,8 +12,8 @@ $(document).ready(function() {
     let socket = io(ip_address + ':' + socket_port);
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    
-    // Join room 
+
+    // Join room
     socket.emit('joinRoom', roomChat.name, userLogin.name);
 
     $(document).on('click', '#btn-chat', function(e) {
@@ -45,13 +45,13 @@ $(document).ready(function() {
         $("#img-preview").hide();
     });
 
-    $('.uploadImage').click(function() { 
+    $('.uploadImage').click(function() {
         let data = $("#input-message").val();
         $("#message").val(data);
     });
 
     $("#send-modal-message").click(function() {
-        if ($("#file").prop('files')[0]) {
+        if ($("#file").prop('files')[0] && $("#message").val()) {
             uploadTOFirebase($("#file").prop('files')[0]);
         }
     });
@@ -66,16 +66,16 @@ $(document).ready(function() {
         sendMessage(message);
         scrollMessages();
     }
-    
+
     function listMessage(message) {
         let element = document.getElementById('messages');
         let data = null;
         if (message.leave) {
-            data = `<div class="chat-message user-join text-center font-semibold text-red-600/70">
+            data = `<div class="chat-message user-join text-center font-semibold text-red-600">
                         ${message.leave}
-                    </div>`; 
+                    </div>`;
         } else if (message.join) {
-            data = `<div class="chat-message user-join text-center font-semibold text-blue-600/70">
+            data = `<div class="chat-message user-join text-center font-semibold text-blue-600">
                            ${message.join}
                         </div>`;
         } else if (message.welcome) {
@@ -128,7 +128,7 @@ $(document).ready(function() {
             },
         });
     }
- 
+
     function uploadTOFirebase(file) {
         let ref = firebase.storage().ref();
         let nameFileCustom = (file.name).substr(0, (file.name).lastIndexOf('.')) +  dateFormat;
