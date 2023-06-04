@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <!-- component -->
         <div
-            class="flex-1 p:2 sm:p-6 flex flex-col h-screen bg-slate-50 dark:border-gray-700 rounded-lg border shadow-md">
+            class="flex-1 p:2 sm:p-6 flex flex-col h-screen bg-slate-50 rounded-lg border shadow-md">
             <div class="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
                 <div class="relative flex items-center space-x-4">
                     <div class="relative outline-dotted outline-2 outline-offset-2 outline-emerald-300  rounded-full">

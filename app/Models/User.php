@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,7 +17,6 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
-    use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -28,7 +26,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -62,14 +62,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the teams for the blog user.
-     */
-    public function team(): HasOne
-    {
-        return $this->hasOne(Team::class);
-    }
-
-    /**
      * Get the to for the blog user.
      */
     public function to(): HasMany
@@ -83,5 +75,15 @@ class User extends Authenticatable
     public function from(): HasMany
     {
         return $this->hasMany(Message::class);
+    }
+
+
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($model) {
+            if (empty($model->profile_photo_path)) {
+                $model->profile_photo_path = 'https://eu.ui-avatars.com/api/?name=' . $model->name . '&size=250';
+            }
+        });
     }
 }
