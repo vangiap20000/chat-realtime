@@ -17,8 +17,6 @@ return new class extends Migration
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->unsignedBigInteger('from')->nullable();
             $table->foreign('from')->references('id')->on('users');
-            $table->unsignedBigInteger('to')->nullable();
-            $table->foreign('to')->references('id')->on('users');
             $table->text('content');
             $table->string('file')->nullable();
             $table->timestamps();
