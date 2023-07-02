@@ -6,7 +6,6 @@ use App\Models\Message;
 use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Mockery\Matcher\Any;
 
 class ChatController extends Controller
 {
@@ -26,13 +25,13 @@ class ChatController extends Controller
         $this->message = $message;
     }
 
-    public function listUsers() 
+    public function listUsers()
     {
         $users = $this->model->where('id', '<>', auth()->user()->id)->get();
         return view('chat.list_user', compact('users'));
     }
 
-    public function roomChatAll(Request $request) 
+    public function roomChatAll(Request $request)
     {
         $chatRoom = $this->room->find(1);
         if($request->ajax()) {
@@ -53,7 +52,7 @@ class ChatController extends Controller
         return view('chat.chat_user', compact('user', 'chatRoom'));
     }
 
-    public function getMessages($roomId) 
+    public function getMessages($roomId)
     {
         $message = $this->message->with('userFrom')->where('room_id', $roomId)->get();
 
