@@ -1,5 +1,5 @@
 # Chat realtime laravel with socket io and node js 
-<p dir="auto">2023</p>
+<p dir="auto">Feb, 2023</p>
 <img class="rounded-t-lg rounded-lg" src="https://firebasestorage.googleapis.com/v0/b/fir-notification-ex-f5bb1.appspot.com/o/Students%2FUntitled07-2-2023.PNG?alt=media&amp;token=fc552a79-8974-4d67-8231-064e587110d7" alt="">
 
 ## FEATURING THE FASTEST AND MOST RELIABLE REAL-TIME ENGINE
@@ -21,6 +21,7 @@ Real-Time Chat is powered by Socket.IO. is a web application that allows multipl
 <code>
     node ./NodeServer/server_node.js
 </code>
+
 ## Running Locally Laravel
 <code>
     composer install
