@@ -33,3 +33,6 @@ Run serve with docker, xampp, laragon, ....
 <code>
     php artisan migrate --seed
 </code>
+
+## Support or Contact
+Having trouble with Pages? Feel free to post an issue
